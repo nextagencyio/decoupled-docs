@@ -1,0 +1,89 @@
+{
+  "data": {
+    "nodeApiReferences": {
+      "__typename": "NodeApiReferenceConnection",
+      "nodes": [
+        {
+          "__typename": "NodeApiReference",
+          "id": "api-list-records",
+          "title": "List Records",
+          "path": "/api/list-records",
+          "body": {
+            "processed": "<p>Retrieves a paginated list of records for a specified data model. Supports filtering, sorting, and field selection.</p><h2>Request</h2><pre><code>GET /v2/data/{model}\n\nHeaders:\n  Authorization: Bearer sk_live_xxx\n  Content-Type: application/json</code></pre><h2>Query Parameters</h2><pre><code>filter    object   Filter criteria (optional)\nsort      string   Sort field and direction, e.g., \"created_at:desc\" (optional)\nlimit     integer  Number of records to return, max 100 (default: 20)\noffset    integer  Number of records to skip (default: 0)\nfields    string   Comma-separated list of fields to include (optional)</code></pre><h2>Response</h2><pre><code>{\n  \"data\": [\n    {\n      \"id\": \"rec_abc123\",\n      \"title\": \"Example Record\",\n      \"created_at\": \"2026-01-15T10:30:00Z\",\n      \"updated_at\": \"2026-02-01T14:22:00Z\"\n    }\n  ],\n  \"meta\": {\n    \"total\": 142,\n    \"limit\": 20,\n    \"offset\": 0,\n    \"has_more\": true\n  }\n}</code></pre>",
+            "summary": "Retrieves a paginated list of records for a specified data model. Supports filtering, sorting, and field selection.RequestGET /v2/data/{model}\n\nHeaders:\n  Authorization: Bearer sk_live_xxx\n  Content-T"
+          },
+          "httpMethod": "GET",
+          "endpointPath": "/v2/data/{model}",
+          "apiVersion": "v2",
+          "authRequired": true,
+          "rateLimit": "100 req/min (Free), 1000 req/min (Pro)",
+          "parameters": [
+            "filter (object)",
+            "sort (string)",
+            "limit (integer, max 100)",
+            "offset (integer)",
+            "fields (string)"
+          ],
+          "responseCodes": [
+            "200 OK - Records returned successfully",
+            "400 Bad Request - Invalid query parameters",
+            "401 Unauthorized - Invalid or missing API key",
+            "404 Not Found - Model does not exist",
+            "429 Too Many Requests - Rate limit exceeded"
+          ]
+        },
+        {
+          "__typename": "NodeApiReference",
+          "id": "api-create-record",
+          "title": "Create Record",
+          "path": "/api/create-record",
+          "body": {
+            "processed": "<p>Creates a new record in the specified data model. The request body must conform to the model's schema definition. Returns the created record with its generated ID.</p><h2>Request</h2><pre><code>POST /v2/data/{model}\n\nHeaders:\n  Authorization: Bearer sk_live_xxx\n  Content-Type: application/json\n\nBody:\n{\n  \"title\": \"New Product\",\n  \"price\": 29.99,\n  \"category\": \"cat_electronics\",\n  \"tags\": [\"new\", \"featured\"]\n}</code></pre><h2>Response</h2><pre><code>HTTP 201 Created\n\n{\n  \"data\": {\n    \"id\": \"rec_xyz789\",\n    \"title\": \"New Product\",\n    \"price\": 29.99,\n    \"category\": \"cat_electronics\",\n    \"tags\": [\"new\", \"featured\"],\n    \"created_at\": \"2026-03-01T09:15:00Z\",\n    \"updated_at\": \"2026-03-01T09:15:00Z\"\n  }\n}</code></pre><h2>Validation Errors</h2><p>If the request body fails schema validation, the API returns a 422 error with details about which fields failed:</p><pre><code>{\n  \"error\": {\n    \"code\": \"VALIDATION_ERROR\",\n    \"message\": \"Request body failed schema validation\",\n    \"details\": [\n      { \"field\": \"price\", \"rule\": \"min\", \"message\": \"Price must be greater than 0\" }\n    ]\n  }\n}</code></pre>",
+            "summary": "Creates a new record in the specified data model. The request body must conform to the model's schema definition. Returns the created record with its generated ID.RequestPOST /v2/data/{model}\n\nHeaders"
+          },
+          "httpMethod": "POST",
+          "endpointPath": "/v2/data/{model}",
+          "apiVersion": "v2",
+          "authRequired": true,
+          "rateLimit": "50 req/min (Free), 500 req/min (Pro)",
+          "parameters": [
+            "Request body conforming to model schema"
+          ],
+          "responseCodes": [
+            "201 Created - Record created successfully",
+            "400 Bad Request - Malformed request body",
+            "401 Unauthorized - Invalid or missing API key",
+            "404 Not Found - Model does not exist",
+            "422 Unprocessable Entity - Schema validation failed",
+            "429 Too Many Requests - Rate limit exceeded"
+          ]
+        },
+        {
+          "__typename": "NodeApiReference",
+          "id": "api-delete-record",
+          "title": "Delete Record",
+          "path": "/api/delete-record",
+          "body": {
+            "processed": "<p>Permanently deletes a record from the specified data model. This action cannot be undone. If the record has related records, the behavior depends on the relationship configuration (cascade, nullify, or restrict).</p><h2>Request</h2><pre><code>DELETE /v2/data/{model}/{id}\n\nHeaders:\n  Authorization: Bearer sk_live_xxx</code></pre><h2>Response</h2><pre><code>HTTP 204 No Content</code></pre><h2>Error Responses</h2><p>If the record cannot be deleted due to relationship constraints:</p><pre><code>HTTP 409 Conflict\n\n{\n  \"error\": {\n    \"code\": \"RELATION_CONSTRAINT\",\n    \"message\": \"Cannot delete record: 3 related records in 'order_items' reference this record\",\n    \"related_model\": \"order_items\",\n    \"related_count\": 3\n  }\n}</code></pre>",
+            "summary": "Permanently deletes a record from the specified data model. This action cannot be undone. If the record has related records, the behavior depends on the relationship configuration (cascade, nullify, o"
+          },
+          "httpMethod": "DELETE",
+          "endpointPath": "/v2/data/{model}/{id}",
+          "apiVersion": "v2",
+          "authRequired": true,
+          "rateLimit": "50 req/min (Free), 500 req/min (Pro)",
+          "parameters": [
+            "id (string, required) - Record ID"
+          ],
+          "responseCodes": [
+            "204 No Content - Record deleted successfully",
+            "401 Unauthorized - Invalid or missing API key",
+            "404 Not Found - Record does not exist",
+            "409 Conflict - Cannot delete due to relationship constraints",
+            "429 Too Many Requests - Rate limit exceeded"
+          ]
+        }
+      ]
+    }
+  }
+}

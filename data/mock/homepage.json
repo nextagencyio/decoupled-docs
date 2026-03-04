@@ -1,0 +1,59 @@
+{
+  "data": {
+    "nodeHomepages": {
+      "__typename": "NodeHomepageConnection",
+      "nodes": [
+        {
+          "__typename": "NodeHomepage",
+          "id": "homepage",
+          "title": "Nexus Platform Documentation",
+          "path": "/homepage",
+          "heroTitle": "Build Faster with Nexus",
+          "heroSubtitle": "Developer Documentation & API Reference",
+          "heroDescription": {
+            "processed": "<p>Everything you need to integrate with the Nexus Platform. From quickstart guides to full API reference, our documentation helps you build, deploy, and scale your applications with confidence.</p>",
+            "summary": "Everything you need to integrate with the Nexus Platform. From quickstart guides to full API reference, our documentation helps you build, deploy, and scale your applications with confidence."
+          },
+          "statsItems": [
+            {
+              "__typename": "ParagraphStatItem",
+              "id": "stat-endpoints",
+              "title": "",
+              "number": "120+",
+              "label": "API Endpoints"
+            },
+            {
+              "__typename": "ParagraphStatItem",
+              "id": "stat-sdks",
+              "title": "",
+              "number": "8",
+              "label": "Official SDKs"
+            },
+            {
+              "__typename": "ParagraphStatItem",
+              "id": "stat-uptime",
+              "title": "",
+              "number": "99.99%",
+              "label": "API Uptime"
+            },
+            {
+              "__typename": "ParagraphStatItem",
+              "id": "stat-developers",
+              "title": "",
+              "number": "50K+",
+              "label": "Active Developers"
+            }
+          ],
+          "featuredGuidesTitle": "Popular Guides",
+          "ctaTitle": "Ready to Start Building?",
+          "ctaDescription": {
+            "processed": "<p>Create a free developer account and get your API keys in under a minute. Our quickstart guide will have you making your first API call in five minutes.</p>",
+            "summary": "Create a free developer account and get your API keys in under a minute. Our quickstart guide will have you making your first API call in five minutes."
+          },
+          "ctaPrimary": "Get API Keys",
+          "ctaSecondary": "View Quickstart"
+        }
+      ]
+    }
+  }
+}

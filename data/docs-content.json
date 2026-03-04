@@ -1,0 +1,319 @@
+{
+  "model": [
+    {
+      "bundle": "homepage",
+      "label": "Homepage",
+      "description": "Developer docs homepage with hero, stats, featured guides, and CTA",
+      "fields": [
+        { "id": "hero_title", "label": "Hero Title", "type": "string" },
+        { "id": "hero_subtitle", "label": "Hero Subtitle", "type": "string" },
+        { "id": "hero_description", "label": "Hero Description", "type": "text" },
+        { "id": "stats_items", "label": "Statistics", "type": "paragraph(stat_item)[]" },
+        { "id": "featured_guides_title", "label": "Featured Guides Title", "type": "string" },
+        { "id": "cta_title", "label": "CTA Title", "type": "string" },
+        { "id": "cta_description", "label": "CTA Description", "type": "text" },
+        { "id": "cta_primary", "label": "Primary CTA", "type": "string" },
+        { "id": "cta_secondary", "label": "Secondary CTA", "type": "string" }
+      ]
+    },
+    {
+      "bundle": "guide",
+      "label": "Guide",
+      "description": "Developer guides and tutorials",
+      "body": true,
+      "fields": [
+        { "id": "difficulty_level", "label": "Difficulty Level", "type": "term(difficulty_levels)[]" },
+        { "id": "reading_time", "label": "Reading Time", "type": "string" },
+        { "id": "topic_area", "label": "Topic Area", "type": "term(topic_areas)[]" },
+        { "id": "prerequisites", "label": "Prerequisites", "type": "string[]" },
+        { "id": "author_name", "label": "Author", "type": "string" },
+        { "id": "last_updated", "label": "Last Updated", "type": "datetime" },
+        { "id": "image", "label": "Guide Image", "type": "image" }
+      ]
+    },
+    {
+      "bundle": "api_reference",
+      "label": "API Reference",
+      "description": "API endpoint documentation",
+      "body": true,
+      "fields": [
+        { "id": "http_method", "label": "HTTP Method", "type": "string" },
+        { "id": "endpoint_path", "label": "Endpoint Path", "type": "string" },
+        { "id": "api_version", "label": "API Version", "type": "string" },
+        { "id": "auth_required", "label": "Authentication Required", "type": "bool" },
+        { "id": "rate_limit", "label": "Rate Limit", "type": "string" },
+        { "id": "parameters", "label": "Parameters", "type": "string[]" },
+        { "id": "response_codes", "label": "Response Codes", "type": "string[]" }
+      ]
+    },
+    {
+      "bundle": "changelog",
+      "label": "Changelog",
+      "description": "Release notes and version changelog",
+      "body": true,
+      "fields": [
+        { "id": "version_number", "label": "Version Number", "type": "string" },
+        { "id": "release_date", "label": "Release Date", "type": "datetime" },
+        { "id": "release_type", "label": "Release Type", "type": "term(release_types)[]" },
+        { "id": "breaking_changes", "label": "Breaking Changes", "type": "bool" },
+        { "id": "highlights", "label": "Highlights", "type": "string[]" }
+      ]
+    },
+    {
+      "bundle": "page",
+      "label": "Basic Page",
+      "description": "Static content pages",
+      "body": true,
+      "fields": []
+    },
+    {
+      "entity": "paragraph",
+      "bundle": "stat_item",
+      "label": "Statistic Item",
+      "fields": [
+        { "id": "number", "label": "Number", "type": "string!" },
+        { "id": "label", "label": "Label", "type": "string!" }
+      ]
+    }
+  ],
+  "taxonomies": [
+    {
+      "vocabulary": "difficulty_levels",
+      "label": "Difficulty Levels",
+      "terms": ["Beginner", "Intermediate", "Advanced"]
+    },
+    {
+      "vocabulary": "topic_areas",
+      "label": "Topic Areas",
+      "terms": ["Getting Started", "Authentication", "Data Models", "Integrations", "Deployment", "Performance", "Security"]
+    },
+    {
+      "vocabulary": "release_types",
+      "label": "Release Types",
+      "terms": ["Major", "Minor", "Patch", "Security"]
+    }
+  ],
+  "content": [
+    {
+      "id": "stat-endpoints",
+      "type": "paragraph.stat_item",
+      "values": { "number": "120+", "label": "API Endpoints" }
+    },
+    {
+      "id": "stat-sdks",
+      "type": "paragraph.stat_item",
+      "values": { "number": "8", "label": "Official SDKs" }
+    },
+    {
+      "id": "stat-uptime",
+      "type": "paragraph.stat_item",
+      "values": { "number": "99.99%", "label": "API Uptime" }
+    },
+    {
+      "id": "stat-developers",
+      "type": "paragraph.stat_item",
+      "values": { "number": "50K+", "label": "Active Developers" }
+    },
+    {
+      "id": "homepage",
+      "type": "node.homepage",
+      "path": "/homepage",
+      "values": {
+        "title": "Nexus Platform Documentation",
+        "hero_title": "Build Faster with Nexus",
+        "hero_subtitle": "Developer Documentation & API Reference",
+        "hero_description": "<p>Everything you need to integrate with the Nexus Platform. From quickstart guides to full API reference, our documentation helps you build, deploy, and scale your applications with confidence.</p>",
+        "stats_items": ["@stat-endpoints", "@stat-sdks", "@stat-uptime", "@stat-developers"],
+        "featured_guides_title": "Popular Guides",
+        "cta_title": "Ready to Start Building?",
+        "cta_description": "<p>Create a free developer account and get your API keys in under a minute. Our quickstart guide will have you making your first API call in five minutes.</p>",
+        "cta_primary": "Get API Keys",
+        "cta_secondary": "View Quickstart"
+      }
+    },
+    {
+      "id": "guide-quickstart",
+      "type": "node.guide",
+      "path": "/guides/quickstart",
+      "values": {
+        "title": "Quickstart Guide",
+        "body": "<p>Get up and running with the Nexus API in under five minutes. This guide walks you through creating an account, generating API keys, and making your first API request.</p><h2>Step 1: Create an Account</h2><p>Sign up for a free Nexus developer account at <code>dashboard.nexus.dev</code>. No credit card required for the free tier, which includes 10,000 API requests per month.</p><h2>Step 2: Generate API Keys</h2><p>Navigate to <strong>Settings &gt; API Keys</strong> and click \"Create New Key.\" You'll receive a public key and a secret key. Keep your secret key safe — it won't be shown again.</p><pre><code>NEXUS_PUBLIC_KEY=pk_live_xxxxxxxxxxxxxxxx\nNEXUS_SECRET_KEY=sk_live_xxxxxxxxxxxxxxxx</code></pre><h2>Step 3: Install the SDK</h2><p>Install the Nexus SDK for your preferred language:</p><pre><code># Node.js\nnpm install @nexus/sdk\n\n# Python\npip install nexus-sdk\n\n# Go\ngo get github.com/nexus/sdk-go</code></pre><h2>Step 4: Make Your First Request</h2><pre><code>import Nexus from '@nexus/sdk';\n\nconst client = new Nexus({ apiKey: process.env.NEXUS_SECRET_KEY });\n\nconst response = await client.data.list();\nconsole.log(response);</code></pre><p>Congratulations! You've made your first Nexus API call. Continue to the <a href=\"/guides/authentication\">Authentication Guide</a> to learn about securing your integration.</p>",
+        "difficulty_level": ["beginner"],
+        "reading_time": "5 min",
+        "topic_area": ["getting-started"],
+        "prerequisites": [],
+        "author_name": "Nexus DevRel Team",
+        "last_updated": "2026-02-15T00:00:00",
+        "image": {
+          "uri": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
+          "alt": "Code on a laptop screen showing API integration"
+        }
+      }
+    },
+    {
+      "id": "guide-auth",
+      "type": "node.guide",
+      "path": "/guides/authentication",
+      "values": {
+        "title": "Authentication Guide",
+        "body": "<p>Learn how to authenticate with the Nexus API using API keys, OAuth 2.0, and JWT tokens. This guide covers all supported authentication methods and best practices for securing your integration.</p><h2>API Key Authentication</h2><p>The simplest authentication method. Include your secret key in the <code>Authorization</code> header:</p><pre><code>Authorization: Bearer sk_live_xxxxxxxxxxxxxxxx</code></pre><p><strong>Important:</strong> Never expose your secret key in client-side code. Use API keys only in server-side applications.</p><h2>OAuth 2.0</h2><p>For applications that need to act on behalf of users, implement the OAuth 2.0 authorization code flow:</p><ol><li>Register your application in the Nexus Dashboard</li><li>Redirect users to the authorization endpoint</li><li>Exchange the authorization code for an access token</li><li>Use the access token for authenticated requests</li></ol><pre><code>GET https://auth.nexus.dev/authorize\n  ?client_id=YOUR_CLIENT_ID\n  &redirect_uri=YOUR_REDIRECT_URI\n  &response_type=code\n  &scope=read write</code></pre><h2>JWT Tokens</h2><p>For microservice-to-microservice authentication, you can generate short-lived JWT tokens signed with your API secret. Tokens expire after 1 hour by default.</p><h2>Best Practices</h2><ul><li>Rotate API keys regularly (at least every 90 days)</li><li>Use environment variables — never hardcode secrets</li><li>Implement the principle of least privilege with scoped tokens</li><li>Monitor your API key usage in the dashboard</li></ul>",
+        "difficulty_level": ["intermediate"],
+        "reading_time": "12 min",
+        "topic_area": ["authentication", "security"],
+        "prerequisites": ["Quickstart Guide", "Nexus developer account"],
+        "author_name": "Priya Sharma",
+        "last_updated": "2026-02-20T00:00:00",
+        "image": {
+          "uri": "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=80",
+          "alt": "Security lock icon overlaid on code"
+        }
+      }
+    },
+    {
+      "id": "guide-data-models",
+      "type": "node.guide",
+      "path": "/guides/data-models",
+      "values": {
+        "title": "Working with Data Models",
+        "body": "<p>Nexus uses a flexible schema system that lets you define custom data models for your application. This guide covers creating schemas, defining relationships, validating data, and querying your models efficiently.</p><h2>Defining a Schema</h2><p>Schemas are defined using our declarative JSON format:</p><pre><code>{\n  \"name\": \"product\",\n  \"fields\": [\n    { \"name\": \"title\", \"type\": \"string\", \"required\": true },\n    { \"name\": \"price\", \"type\": \"number\", \"min\": 0 },\n    { \"name\": \"category\", \"type\": \"relation\", \"target\": \"category\" },\n    { \"name\": \"tags\", \"type\": \"string[]\", \"maxItems\": 10 }\n  ]\n}</code></pre><h2>Relationships</h2><p>Nexus supports one-to-one, one-to-many, and many-to-many relationships between models. Use the <code>relation</code> field type and specify the target model:</p><pre><code>{ \"name\": \"author\", \"type\": \"relation\", \"target\": \"user\", \"cardinality\": \"one\" }\n{ \"name\": \"tags\", \"type\": \"relation\", \"target\": \"tag\", \"cardinality\": \"many\" }</code></pre><h2>Querying Data</h2><p>Use the query API to filter, sort, and paginate your data:</p><pre><code>const products = await client.data.query('product', {\n  filter: { category: 'electronics', price: { $lt: 100 } },\n  sort: { field: 'created_at', order: 'desc' },\n  limit: 20,\n  offset: 0\n});</code></pre><h2>Validation</h2><p>Built-in validation ensures data integrity. Define validation rules directly in your schema, and the API will reject invalid data with descriptive error messages.</p>",
+        "difficulty_level": ["intermediate"],
+        "reading_time": "15 min",
+        "topic_area": ["data-models"],
+        "prerequisites": ["Quickstart Guide", "Authentication Guide"],
+        "author_name": "Jordan Lee",
+        "last_updated": "2026-01-30T00:00:00",
+        "image": {
+          "uri": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
+          "alt": "Database schema diagram on a whiteboard"
+        }
+      }
+    },
+    {
+      "id": "guide-deployment",
+      "type": "node.guide",
+      "path": "/guides/deployment",
+      "values": {
+        "title": "Deployment Best Practices",
+        "body": "<p>This guide covers everything you need to know about deploying applications that use the Nexus API in production environments. From environment configuration to monitoring and scaling.</p><h2>Environment Configuration</h2><p>Use separate API keys for development, staging, and production. Nexus provides environment-specific keys that isolate data between environments:</p><pre><code># Development\nNEXUS_SECRET_KEY=sk_test_xxxxxxxx\n\n# Production\nNEXUS_SECRET_KEY=sk_live_xxxxxxxx</code></pre><h2>Rate Limits</h2><p>Production rate limits vary by plan:</p><ul><li><strong>Free:</strong> 100 requests/minute</li><li><strong>Pro:</strong> 1,000 requests/minute</li><li><strong>Enterprise:</strong> Custom limits</li></ul><p>Implement exponential backoff for rate-limited requests. The API returns a <code>Retry-After</code> header with the number of seconds to wait.</p><h2>Caching</h2><p>Use the <code>ETag</code> and <code>Last-Modified</code> headers returned by the API to implement client-side caching. This reduces unnecessary API calls and improves your application's performance.</p><h2>Monitoring</h2><p>The Nexus Dashboard provides real-time metrics including request volume, error rates, latency percentiles, and webhook delivery status. Set up alerts for anomalies.</p>",
+        "difficulty_level": ["advanced"],
+        "reading_time": "18 min",
+        "topic_area": ["deployment", "performance"],
+        "prerequisites": ["Quickstart Guide", "Authentication Guide", "Working with Data Models"],
+        "author_name": "Alex Chen",
+        "last_updated": "2026-02-10T00:00:00",
+        "image": {
+          "uri": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
+          "alt": "Server infrastructure with glowing network connections"
+        }
+      }
+    },
+    {
+      "id": "api-list-records",
+      "type": "node.api_reference",
+      "path": "/api/list-records",
+      "values": {
+        "title": "List Records",
+        "body": "<p>Retrieves a paginated list of records for a specified data model. Supports filtering, sorting, and field selection.</p><h2>Request</h2><pre><code>GET /v2/data/{model}\n\nHeaders:\n  Authorization: Bearer sk_live_xxx\n  Content-Type: application/json</code></pre><h2>Query Parameters</h2><pre><code>filter    object   Filter criteria (optional)\nsort      string   Sort field and direction, e.g., \"created_at:desc\" (optional)\nlimit     integer  Number of records to return, max 100 (default: 20)\noffset    integer  Number of records to skip (default: 0)\nfields    string   Comma-separated list of fields to include (optional)</code></pre><h2>Response</h2><pre><code>{\n  \"data\": [\n    {\n      \"id\": \"rec_abc123\",\n      \"title\": \"Example Record\",\n      \"created_at\": \"2026-01-15T10:30:00Z\",\n      \"updated_at\": \"2026-02-01T14:22:00Z\"\n    }\n  ],\n  \"meta\": {\n    \"total\": 142,\n    \"limit\": 20,\n    \"offset\": 0,\n    \"has_more\": true\n  }\n}</code></pre>",
+        "http_method": "GET",
+        "endpoint_path": "/v2/data/{model}",
+        "api_version": "v2",
+        "auth_required": true,
+        "rate_limit": "100 req/min (Free), 1000 req/min (Pro)",
+        "parameters": ["filter (object)", "sort (string)", "limit (integer, max 100)", "offset (integer)", "fields (string)"],
+        "response_codes": ["200 OK - Records returned successfully", "400 Bad Request - Invalid query parameters", "401 Unauthorized - Invalid or missing API key", "404 Not Found - Model does not exist", "429 Too Many Requests - Rate limit exceeded"]
+      }
+    },
+    {
+      "id": "api-create-record",
+      "type": "node.api_reference",
+      "path": "/api/create-record",
+      "values": {
+        "title": "Create Record",
+        "body": "<p>Creates a new record in the specified data model. The request body must conform to the model's schema definition. Returns the created record with its generated ID.</p><h2>Request</h2><pre><code>POST /v2/data/{model}\n\nHeaders:\n  Authorization: Bearer sk_live_xxx\n  Content-Type: application/json\n\nBody:\n{\n  \"title\": \"New Product\",\n  \"price\": 29.99,\n  \"category\": \"cat_electronics\",\n  \"tags\": [\"new\", \"featured\"]\n}</code></pre><h2>Response</h2><pre><code>HTTP 201 Created\n\n{\n  \"data\": {\n    \"id\": \"rec_xyz789\",\n    \"title\": \"New Product\",\n    \"price\": 29.99,\n    \"category\": \"cat_electronics\",\n    \"tags\": [\"new\", \"featured\"],\n    \"created_at\": \"2026-03-01T09:15:00Z\",\n    \"updated_at\": \"2026-03-01T09:15:00Z\"\n  }\n}</code></pre><h2>Validation Errors</h2><p>If the request body fails schema validation, the API returns a 422 error with details about which fields failed:</p><pre><code>{\n  \"error\": {\n    \"code\": \"VALIDATION_ERROR\",\n    \"message\": \"Request body failed schema validation\",\n    \"details\": [\n      { \"field\": \"price\", \"rule\": \"min\", \"message\": \"Price must be greater than 0\" }\n    ]\n  }\n}</code></pre>",
+        "http_method": "POST",
+        "endpoint_path": "/v2/data/{model}",
+        "api_version": "v2",
+        "auth_required": true,
+        "rate_limit": "50 req/min (Free), 500 req/min (Pro)",
+        "parameters": ["Request body conforming to model schema"],
+        "response_codes": ["201 Created - Record created successfully", "400 Bad Request - Malformed request body", "401 Unauthorized - Invalid or missing API key", "404 Not Found - Model does not exist", "422 Unprocessable Entity - Schema validation failed", "429 Too Many Requests - Rate limit exceeded"]
+      }
+    },
+    {
+      "id": "api-delete-record",
+      "type": "node.api_reference",
+      "path": "/api/delete-record",
+      "values": {
+        "title": "Delete Record",
+        "body": "<p>Permanently deletes a record from the specified data model. This action cannot be undone. If the record has related records, the behavior depends on the relationship configuration (cascade, nullify, or restrict).</p><h2>Request</h2><pre><code>DELETE /v2/data/{model}/{id}\n\nHeaders:\n  Authorization: Bearer sk_live_xxx</code></pre><h2>Response</h2><pre><code>HTTP 204 No Content</code></pre><h2>Error Responses</h2><p>If the record cannot be deleted due to relationship constraints:</p><pre><code>HTTP 409 Conflict\n\n{\n  \"error\": {\n    \"code\": \"RELATION_CONSTRAINT\",\n    \"message\": \"Cannot delete record: 3 related records in 'order_items' reference this record\",\n    \"related_model\": \"order_items\",\n    \"related_count\": 3\n  }\n}</code></pre>",
+        "http_method": "DELETE",
+        "endpoint_path": "/v2/data/{model}/{id}",
+        "api_version": "v2",
+        "auth_required": true,
+        "rate_limit": "50 req/min (Free), 500 req/min (Pro)",
+        "parameters": ["id (string, required) - Record ID"],
+        "response_codes": ["204 No Content - Record deleted successfully", "401 Unauthorized - Invalid or missing API key", "404 Not Found - Record does not exist", "409 Conflict - Cannot delete due to relationship constraints", "429 Too Many Requests - Rate limit exceeded"]
+      }
+    },
+    {
+      "id": "changelog-v2-4",
+      "type": "node.changelog",
+      "path": "/changelog/v2-4-0",
+      "values": {
+        "title": "v2.4.0 - Batch Operations & Improved Filtering",
+        "body": "<p>This release introduces batch operations for bulk data management and significantly improves our query filtering capabilities.</p><h2>New Features</h2><ul><li><strong>Batch Create:</strong> Create up to 100 records in a single API call with <code>POST /v2/data/{model}/batch</code></li><li><strong>Batch Delete:</strong> Delete multiple records by ID with <code>DELETE /v2/data/{model}/batch</code></li><li><strong>Advanced Filters:</strong> New filter operators including <code>$in</code>, <code>$nin</code>, <code>$between</code>, and <code>$regex</code></li><li><strong>Nested Filtering:</strong> Filter on related model fields using dot notation (e.g., <code>author.name</code>)</li></ul><h2>Improvements</h2><ul><li>Query performance improved by 40% for large datasets</li><li>Pagination now supports cursor-based navigation in addition to offset</li><li>Error messages now include suggestion hints for common mistakes</li></ul><h2>Bug Fixes</h2><ul><li>Fixed edge case where sorting by datetime fields could skip records at page boundaries</li><li>Resolved issue with special characters in filter string values</li></ul>",
+        "version_number": "2.4.0",
+        "release_date": "2026-02-28T00:00:00",
+        "release_type": ["minor"],
+        "breaking_changes": false,
+        "highlights": ["Batch create/delete operations", "Advanced filter operators ($in, $nin, $between, $regex)", "40% query performance improvement", "Cursor-based pagination"]
+      }
+    },
+    {
+      "id": "changelog-v2-3",
+      "type": "node.changelog",
+      "path": "/changelog/v2-3-0",
+      "values": {
+        "title": "v2.3.0 - Webhooks & Real-Time Events",
+        "body": "<p>Webhooks are here! Subscribe to data change events and receive real-time notifications when records are created, updated, or deleted.</p><h2>New Features</h2><ul><li><strong>Webhooks:</strong> Configure webhook endpoints in the dashboard to receive event notifications</li><li><strong>Event Types:</strong> Subscribe to <code>record.created</code>, <code>record.updated</code>, <code>record.deleted</code>, and <code>schema.changed</code></li><li><strong>Webhook Signatures:</strong> All webhook payloads are signed with HMAC-SHA256 for verification</li><li><strong>Retry Policy:</strong> Failed deliveries are retried with exponential backoff up to 5 times</li></ul><h2>Improvements</h2><ul><li>Dashboard now shows webhook delivery logs with payload inspection</li><li>API response times reduced by 15% across all endpoints</li><li>SDK updates for Node.js, Python, and Go with webhook helpers</li></ul>",
+        "version_number": "2.3.0",
+        "release_date": "2026-01-15T00:00:00",
+        "release_type": ["minor"],
+        "breaking_changes": false,
+        "highlights": ["Webhook support for real-time notifications", "Event subscriptions", "HMAC-SHA256 payload signatures", "15% API response time improvement"]
+      }
+    },
+    {
+      "id": "changelog-v2-2-1",
+      "type": "node.changelog",
+      "path": "/changelog/v2-2-1",
+      "values": {
+        "title": "v2.2.1 - Security Patch",
+        "body": "<p>This security release addresses a vulnerability in the OAuth token refresh flow and improves rate limiting behavior.</p><h2>Security Fixes</h2><ul><li>Fixed a vulnerability where expired OAuth refresh tokens could be reused under specific timing conditions</li><li>Improved token entropy from 128-bit to 256-bit for all new API keys</li></ul><h2>Bug Fixes</h2><ul><li>Rate limit headers now correctly reflect remaining requests after each call</li><li>Fixed incorrect <code>Retry-After</code> header values for certain rate limit scenarios</li></ul><p><strong>Action Required:</strong> If you use OAuth refresh tokens, we recommend rotating all active refresh tokens within the next 30 days as a precautionary measure. No evidence of exploitation has been found.</p>",
+        "version_number": "2.2.1",
+        "release_date": "2025-12-20T00:00:00",
+        "release_type": ["security"],
+        "breaking_changes": false,
+        "highlights": ["OAuth refresh token security fix", "Improved API key entropy (256-bit)", "Rate limit header accuracy fix"]
+      }
+    },
+    {
+      "id": "page-about",
+      "type": "node.page",
+      "path": "/about",
+      "values": {
+        "title": "About Nexus Platform",
+        "body": "<p>Nexus is a developer-first data platform that makes it easy to build, manage, and scale content-driven applications. Our API-first approach gives developers full control over their data while providing a powerful dashboard for content teams.</p><h2>Our Mission</h2><p>We believe developers shouldn't have to choose between flexibility and ease of use. Nexus provides a fully managed backend with the flexibility of a custom API — letting you focus on building great user experiences instead of managing infrastructure.</p><h2>Key Features</h2><ul><li><strong>Schema-based Data Models</strong> — Define your content structure with flexible, typed schemas</li><li><strong>RESTful API</strong> — Clean, predictable endpoints with comprehensive documentation</li><li><strong>Multi-environment</strong> — Separate development, staging, and production environments</li><li><strong>Official SDKs</strong> — First-class support for Node.js, Python, Go, Ruby, PHP, Java, .NET, and Swift</li><li><strong>Webhooks</strong> — Real-time event notifications for data changes</li><li><strong>Global CDN</strong> — Content delivered from edge locations worldwide</li></ul><h2>Support</h2><p>Need help? Our developer relations team is here for you:</p><ul><li>Documentation: docs.nexus.dev</li><li>Discord Community: discord.gg/nexusdev</li><li>Email Support: support@nexus.dev</li><li>Enterprise Support: Available with Pro and Enterprise plans</li></ul>"
+      }
+    },
+    {
+      "id": "page-sdks",
+      "type": "node.page",
+      "path": "/sdks",
+      "values": {
+        "title": "Official SDKs & Libraries",
+        "body": "<p>We maintain official SDKs for all major programming languages. Each SDK provides type-safe access to the Nexus API with built-in retry logic, error handling, and authentication management.</p><h2>Available SDKs</h2><h3>JavaScript / TypeScript</h3><pre><code>npm install @nexus/sdk</code></pre><p>Full TypeScript support with auto-generated types from your schema. Works in Node.js, Deno, and edge runtimes.</p><h3>Python</h3><pre><code>pip install nexus-sdk</code></pre><p>Async support with <code>aiohttp</code> and sync support with <code>requests</code>. Python 3.8+ required.</p><h3>Go</h3><pre><code>go get github.com/nexus/sdk-go</code></pre><p>Idiomatic Go client with context support and configurable HTTP transport.</p><h3>Ruby</h3><pre><code>gem install nexus-sdk</code></pre><p>Ruby 3.0+ required. Rails integration gem also available.</p><h3>PHP</h3><pre><code>composer require nexus/sdk</code></pre><p>PSR-18 compatible. Works with Laravel, Symfony, and standalone PHP applications.</p><h2>Community SDKs</h2><p>Our community maintains additional SDKs for Rust, Kotlin, and Elixir. While not officially supported, they are actively maintained and widely used. Find them on our GitHub organization.</p>"
+      }
+    }
+  ]
+}

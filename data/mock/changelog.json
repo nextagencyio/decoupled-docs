@@ -1,0 +1,89 @@
+{
+  "data": {
+    "nodeChangelogs": {
+      "__typename": "NodeChangelogConnection",
+      "nodes": [
+        {
+          "__typename": "NodeChangelog",
+          "id": "changelog-v2-4",
+          "title": "v2.4.0 - Batch Operations & Improved Filtering",
+          "path": "/changelog/v2-4-0",
+          "body": {
+            "processed": "<p>This release introduces batch operations for bulk data management and significantly improves our query filtering capabilities.</p><h2>New Features</h2><ul><li><strong>Batch Create:</strong> Create up to 100 records in a single API call with <code>POST /v2/data/{model}/batch</code></li><li><strong>Batch Delete:</strong> Delete multiple records by ID with <code>DELETE /v2/data/{model}/batch</code></li><li><strong>Advanced Filters:</strong> New filter operators including <code>$in</code>, <code>$nin</code>, <code>$between</code>, and <code>$regex</code></li><li><strong>Nested Filtering:</strong> Filter on related model fields using dot notation (e.g., <code>author.name</code>)</li></ul><h2>Improvements</h2><ul><li>Query performance improved by 40% for large datasets</li><li>Pagination now supports cursor-based navigation in addition to offset</li><li>Error messages now include suggestion hints for common mistakes</li></ul><h2>Bug Fixes</h2><ul><li>Fixed edge case where sorting by datetime fields could skip records at page boundaries</li><li>Resolved issue with special characters in filter string values</li></ul>",
+            "summary": "This release introduces batch operations for bulk data management and significantly improves our query filtering capabilities.New FeaturesBatch Create: Create up to 100 records in a single API call wi"
+          },
+          "versionNumber": "2.4.0",
+          "releaseDate": {
+            "timestamp": 1772258400
+          },
+          "releaseType": [
+            {
+              "id": "minor",
+              "name": "minor"
+            }
+          ],
+          "breakingChanges": false,
+          "highlights": [
+            "Batch create/delete operations",
+            "Advanced filter operators ($in, $nin, $between, $regex)",
+            "40% query performance improvement",
+            "Cursor-based pagination"
+          ]
+        },
+        {
+          "__typename": "NodeChangelog",
+          "id": "changelog-v2-3",
+          "title": "v2.3.0 - Webhooks & Real-Time Events",
+          "path": "/changelog/v2-3-0",
+          "body": {
+            "processed": "<p>Webhooks are here! Subscribe to data change events and receive real-time notifications when records are created, updated, or deleted.</p><h2>New Features</h2><ul><li><strong>Webhooks:</strong> Configure webhook endpoints in the dashboard to receive event notifications</li><li><strong>Event Types:</strong> Subscribe to <code>record.created</code>, <code>record.updated</code>, <code>record.deleted</code>, and <code>schema.changed</code></li><li><strong>Webhook Signatures:</strong> All webhook payloads are signed with HMAC-SHA256 for verification</li><li><strong>Retry Policy:</strong> Failed deliveries are retried with exponential backoff up to 5 times</li></ul><h2>Improvements</h2><ul><li>Dashboard now shows webhook delivery logs with payload inspection</li><li>API response times reduced by 15% across all endpoints</li><li>SDK updates for Node.js, Python, and Go with webhook helpers</li></ul>",
+            "summary": "Webhooks are here! Subscribe to data change events and receive real-time notifications when records are created, updated, or deleted.New FeaturesWebhooks: Configure webhook endpoints in the dashboard "
+          },
+          "versionNumber": "2.3.0",
+          "releaseDate": {
+            "timestamp": 1768456800
+          },
+          "releaseType": [
+            {
+              "id": "minor",
+              "name": "minor"
+            }
+          ],
+          "breakingChanges": false,
+          "highlights": [
+            "Webhook support for real-time notifications",
+            "Event subscriptions",
+            "HMAC-SHA256 payload signatures",
+            "15% API response time improvement"
+          ]
+        },
+        {
+          "__typename": "NodeChangelog",
+          "id": "changelog-v2-2-1",
+          "title": "v2.2.1 - Security Patch",
+          "path": "/changelog/v2-2-1",
+          "body": {
+            "processed": "<p>This security release addresses a vulnerability in the OAuth token refresh flow and improves rate limiting behavior.</p><h2>Security Fixes</h2><ul><li>Fixed a vulnerability where expired OAuth refresh tokens could be reused under specific timing conditions</li><li>Improved token entropy from 128-bit to 256-bit for all new API keys</li></ul><h2>Bug Fixes</h2><ul><li>Rate limit headers now correctly reflect remaining requests after each call</li><li>Fixed incorrect <code>Retry-After</code> header values for certain rate limit scenarios</li></ul><p><strong>Action Required:</strong> If you use OAuth refresh tokens, we recommend rotating all active refresh tokens within the next 30 days as a precautionary measure. No evidence of exploitation has been found.</p>",
+            "summary": "This security release addresses a vulnerability in the OAuth token refresh flow and improves rate limiting behavior.Security FixesFixed a vulnerability where expired OAuth refresh tokens could be reus"
+          },
+          "versionNumber": "2.2.1",
+          "releaseDate": {
+            "timestamp": 1766210400
+          },
+          "releaseType": [
+            {
+              "id": "security",
+              "name": "security"
+            }
+          ],
+          "breakingChanges": false,
+          "highlights": [
+            "OAuth refresh token security fix",
+            "Improved API key entropy (256-bit)",
+            "Rate limit header accuracy fix"
+          ]
+        }
+      ]
+    }
+  }
+}
