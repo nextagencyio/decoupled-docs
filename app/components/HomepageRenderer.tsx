@@ -50,7 +50,7 @@ const features = [
 
 export default function HomepageRenderer({ homepageContent }: HomepageRendererProps) {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#f8fafc]">
       <Header />
 
       <ErrorBoundary>
@@ -62,10 +62,10 @@ export default function HomepageRenderer({ homepageContent }: HomepageRendererPr
       </ErrorBoundary>
 
       {/* Documentation Sections - List View */}
-      <section className="bg-white py-16">
+      <section className="bg-[#f8fafc] py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-mono text-sm font-medium tracking-widest text-primary-400 uppercase mb-8">Documentation</h2>
-          <div className="border-t border-primary-200">
+          <h2 className="font-mono text-2xl font-semibold text-primary-900 mb-8">Documentation</h2>
+          <div className="border-t border-primary-200 bg-white rounded-xl overflow-hidden shadow-sm">
             {docSections.map((section, i) => (
               <Link
                 key={i}
@@ -88,7 +88,7 @@ export default function HomepageRenderer({ homepageContent }: HomepageRendererPr
       </section>
 
       {/* Icon Showcase */}
-      <section className="bg-white py-16">
+      <section className="bg-white py-16 border-y border-primary-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="font-mono text-sm font-medium tracking-widest text-primary-400 uppercase mb-12">Capabilities</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8">
@@ -103,14 +103,14 @@ export default function HomepageRenderer({ homepageContent }: HomepageRendererPr
       </section>
 
       {/* Features / Code Snippets (replacing photo gallery for docs) */}
-      <section className="bg-white py-16">
+      <section className="bg-primary-950 py-16">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-mono text-sm font-medium tracking-widest text-primary-400 uppercase mb-8">Code Examples</h2>
+          <h2 className="font-mono text-2xl font-semibold text-white mb-8">Code Examples</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {features.map((feature, i) => (
-              <div key={i} className="bg-primary-50 rounded-sm p-6">
-                <h3 className="font-mono text-sm font-medium text-primary-700 mb-3">{feature.title}</h3>
-                <pre className="font-mono text-xs text-primary-500 leading-relaxed whitespace-pre-wrap">{feature.code}</pre>
+              <div key={i} className="bg-primary-900 rounded-lg p-6 border border-primary-700">
+                <h3 className="font-mono text-sm font-medium text-primary-100 mb-3">{feature.title}</h3>
+                <pre className="font-mono text-xs text-primary-300 leading-relaxed whitespace-pre-wrap">{feature.code}</pre>
               </div>
             ))}
           </div>
