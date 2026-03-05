@@ -12,27 +12,39 @@ export default function HeroSection({ homepageContent }: HeroSectionProps) {
   const description = (homepageContent as any)?.heroDescription?.processed || ''
 
   return (
-    <section className="relative overflow-hidden pt-32 pb-16 md:pt-48 md:pb-24">
+    <section className="relative overflow-hidden pt-32 pb-20 md:pt-48 md:pb-32">
       <div className="absolute inset-0">
         <img
           src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=2000&q=80&fit=crop"
           alt="Code editor"
-          className="h-full w-full object-cover opacity-25"
+          className="h-full w-full object-cover opacity-15"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-primary-950/90 via-primary-900/80 to-primary-800/65" />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-950 via-primary-900 to-accent-950" />
       </div>
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="inline-flex items-center gap-2 bg-accent-500/10 border border-accent-500/20 rounded-full px-4 py-1.5 mb-8">
+          <span className="w-2 h-2 rounded-full bg-accent-400 animate-pulse" />
+          <span className="text-sm font-medium text-accent-300">v2.0 now available</span>
+        </div>
         <h1 className="font-mono text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white leading-[0.9]">
           {title}
         </h1>
         {subtitle && (
-          <p className="text-lg text-primary-100 mt-8 max-w-xl">{subtitle}</p>
+          <p className="text-lg text-primary-200 mt-8 max-w-xl leading-relaxed">{subtitle}</p>
         )}
         {description && !subtitle && (
-          <div className="text-lg text-primary-100 mt-8 max-w-xl" dangerouslySetInnerHTML={{ __html: description }} />
+          <div className="text-lg text-primary-200 mt-8 max-w-xl leading-relaxed" dangerouslySetInnerHTML={{ __html: description }} />
         )}
-        <div className="mt-12 font-mono text-sm text-primary-100 bg-primary-950/70 border border-primary-700/60 rounded-sm px-6 py-4 max-w-md">
-          <span className="text-accent-500">$</span> npm install opendocs-sdk
+        <div className="mt-12 flex flex-col sm:flex-row gap-4">
+          <div className="font-mono text-sm text-primary-100 bg-primary-950/80 border border-primary-700/50 rounded-lg px-6 py-4 max-w-md backdrop-blur-sm">
+            <span className="text-accent-400">$</span> npm install opendocs-sdk
+          </div>
+          <a
+            href="/guides"
+            className="inline-flex items-center justify-center bg-accent-500 hover:bg-accent-600 text-white font-medium px-6 py-4 rounded-lg text-sm transition-colors duration-200"
+          >
+            Read the Docs
+          </a>
         </div>
       </div>
     </section>

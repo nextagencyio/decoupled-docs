@@ -70,16 +70,16 @@ export default function HomepageRenderer({ homepageContent }: HomepageRendererPr
               <Link
                 key={i}
                 href={section.href}
-                className="group flex items-center justify-between py-6 border-b border-primary-200 transition-all duration-200 hover:pl-1"
+                className="group flex items-center justify-between px-6 py-6 border-b border-primary-100 transition-all duration-200 hover:bg-primary-50"
               >
                 <div className="flex items-baseline gap-4">
-                  <h3 className="text-lg font-medium text-primary-900 group-hover:text-accent-500 transition-colors duration-200">
+                  <h3 className="text-lg font-medium text-primary-900 group-hover:text-accent-600 transition-colors duration-200">
                     {section.title}
                   </h3>
-                  <span className="text-sm text-primary-400 hidden sm:inline">{section.description}</span>
+                  <span className="text-sm text-primary-500 hidden sm:inline">{section.description}</span>
                 </div>
-                <span className="text-sm text-primary-400 shrink-0 ml-4">
-                  View
+                <span className="text-sm text-primary-500 group-hover:text-accent-600 shrink-0 ml-4 transition-colors duration-200">
+                  View &rarr;
                 </span>
               </Link>
             ))}
@@ -90,7 +90,7 @@ export default function HomepageRenderer({ homepageContent }: HomepageRendererPr
       {/* Icon Showcase */}
       <section className="bg-white py-16 border-y border-primary-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="font-mono text-sm font-medium tracking-widest text-primary-400 uppercase mb-12">Capabilities</h2>
+          <h2 className="font-mono text-sm font-medium tracking-widest text-primary-500 uppercase mb-12">Capabilities</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-8">
             {icons.map((item, i) => (
               <div key={i} className="flex flex-col items-center text-center">
@@ -121,16 +121,16 @@ export default function HomepageRenderer({ homepageContent }: HomepageRendererPr
         <CTASection homepageContent={homepageContent} />
       </ErrorBoundary>
 
-      <footer className="bg-white border-t border-primary-100">
+      <footer className="bg-white border-t border-primary-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="text-sm text-primary-400">
+            <p className="text-sm text-primary-500">
               &copy; {new Date().getFullYear()} OpenDocs
             </p>
             <div className="flex items-center space-x-6">
-              <Link href="/guides" className="text-sm text-primary-400 hover:text-primary-900 transition-colors">Guides</Link>
-              <Link href="/changelog" className="text-sm text-primary-400 hover:text-primary-900 transition-colors">Changelog</Link>
-              <Link href="/contact" className="text-sm text-primary-400 hover:text-primary-900 transition-colors">Contact</Link>
+              <Link href="/guides" className="text-sm text-primary-500 hover:text-primary-900 transition-colors">Guides</Link>
+              <Link href="/changelog" className="text-sm text-primary-500 hover:text-primary-900 transition-colors">Changelog</Link>
+              <Link href="/contact" className="text-sm text-primary-500 hover:text-primary-900 transition-colors">Contact</Link>
             </div>
           </div>
         </div>

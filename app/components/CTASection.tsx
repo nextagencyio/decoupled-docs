@@ -11,14 +11,17 @@ export default function CTASection({ homepageContent }: CTASectionProps) {
   const primaryLabel = (homepageContent as any)?.ctaPrimary || 'Read the Docs'
 
   return (
-    <section className="bg-white py-24 md:py-32">
+    <section className="bg-gradient-to-b from-primary-950 to-primary-900 py-24 md:py-32">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 className="font-mono text-3xl md:text-4xl font-bold tracking-tight text-primary-950 mb-10">
+        <h2 className="font-mono text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
           {title}
         </h2>
+        <p className="text-primary-300 mb-10 max-w-lg mx-auto">
+          Explore our guides, tutorials, and API reference to get up and running in minutes.
+        </p>
         <a
           href="/guides"
-          className="inline-block border-2 border-primary-900 text-primary-900 px-8 py-3 text-sm font-medium tracking-wide uppercase hover:bg-primary-900 hover:text-white transition-colors duration-200"
+          className="inline-block bg-accent-500 hover:bg-accent-600 text-white px-8 py-3.5 rounded-lg text-sm font-medium tracking-wide transition-colors duration-200"
         >
           {primaryLabel}
         </a>
