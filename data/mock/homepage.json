@@ -19,28 +19,28 @@
               "__typename": "ParagraphStatItem",
               "id": "stat-endpoints",
               "title": "",
-              "number": "120+",
+              "number": "120+", "value": "120+",
               "label": "API Endpoints"
             },
             {
               "__typename": "ParagraphStatItem",
               "id": "stat-sdks",
               "title": "",
-              "number": "8",
+              "number": "8", "value": "8",
               "label": "Official SDKs"
             },
             {
               "__typename": "ParagraphStatItem",
               "id": "stat-uptime",
               "title": "",
-              "number": "99.99%",
+              "number": "99.99%", "value": "99.99%",
               "label": "API Uptime"
             },
             {
               "__typename": "ParagraphStatItem",
               "id": "stat-developers",
               "title": "",
-              "number": "50K+",
+              "number": "50K+", "value": "50K+",
               "label": "Active Developers"
             }
           ],
